@@ -254,7 +254,13 @@ async def encod(event):
         if not os.path.isdir(rr):
             os.mkdir(rr)
         bb = kk.replace(f".{aa}", " compressed.mkv")
-        out = f"{rr}/{bb}"
+        if '1080p' in bb:
+            cc = bb.replace("1080p", "576p")
+        elif '720p' in bb:
+            cc = bb.replace("720p", "576p")
+        else:
+            cc = bb
+        out = f"{rr}/{cc}"
         thum = "75ee20ec8d8c8bba84f02.jpg"
         dtime = ts(int((es - s).seconds) * 1000)
         hehe = f"{out};{dl};{thum};{dtime}"
