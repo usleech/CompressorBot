@@ -79,7 +79,7 @@ async def encc(e):
                 [Button.inline("CANCEL PROCESS", data=f"skip{wah}")],
             ],
         )
-        cmd = f"ffmpeg -i '{dl}' -preset ultrafast -vcodec libx265 -crf 28 '{out}' -y"
+        cmd = f"ffmpeg -i '{dl}' -preset superfast -vf scale=1024:-1 -vcodec libx265 -crf 24 -c:a libfdk_aac -vbr 5 '{out}' -y"
         process = await asyncio.create_subprocess_shell(
             cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
         )
@@ -143,7 +143,7 @@ async def sample(e):
             [Button.inline("CANCEL PROCESS", data=f"skip{wah}")],
         ],
     )
-    ncmd = f"ffmpeg -i '{dl}' -preset ultrafast -ss {ss} -to {dd} -c:v libx265 -crf 28 '{out}'"
+    ncmd = f"ffmpeg -i '{dl}' -preset superfast -ss {ss} -to {dd} -vf scale=1024:-1 -c:v libx265 -crf 24 -c:a libfdk_aac -vbr 5 '{out}'"
     process = await asyncio.create_subprocess_shell(
         ncmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
@@ -291,7 +291,7 @@ async def customenc(e, key):
             [Button.inline("CANCEL PROCESS", data=f"skip{wah}")],
         ],
     )
-    cmd = f"ffmpeg -i '{dl}' -preset ultrafast -vcodec libx265 -crf 28 '{out}' -y"
+    cmd = f"ffmpeg -i '{dl}' -preset superfast -vf scale=1024:-1 -vcodec libx265 -crf 24 -c:a libfdk_aac -vbr 5 '{out}' -y"
     process = await asyncio.create_subprocess_shell(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
