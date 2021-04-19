@@ -85,6 +85,7 @@ async def encc(e):
         )
         stdout, stderr = await process.communicate()
         er = stderr.decode()
+        print(f'[stdout]\n{stdout.decode()}')
         try:
             if er:
                 await e.edit(str(er) + "\n\n**ERROR** Contact @danish_00")
@@ -149,6 +150,7 @@ async def sample(e):
     )
     stdout, stderr = await process.communicate()
     er = stderr.decode()
+    print(f'[stdout]\n{stdout.decode()}')
     try:
         if er:
             await e.edit(str(er) + "\n\n**ERROR** Contact @danish_00")
@@ -303,6 +305,7 @@ async def customenc(e, key):
     )
     stdout, stderr = await process.communicate()
     er = stderr.decode()
+    print(f'[stdout]\n{stdout.decode()}')
     try:
         if er:
             await e.edit(str(er) + "\n\n**ERROR** Contact @danish_00")
